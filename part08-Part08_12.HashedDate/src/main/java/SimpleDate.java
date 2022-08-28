@@ -15,6 +15,26 @@ public class SimpleDate {
     public String toString() {
         return this.day + "." + this.month + "." + this.year;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        if (obj == this) {
+            return true;
+        }
+        
+        SimpleDate compared = (SimpleDate) obj;
+        
+        return this.day == compared.day && this.month == compared.month && this.year == compared.year;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.day + this.month * 32 + this.year * 366;
+    }
 
     public boolean earlier(SimpleDate other) {
         if (this.year < other.year) {

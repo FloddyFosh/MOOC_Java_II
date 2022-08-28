@@ -16,6 +16,30 @@ public class SimpleDate {
         return this.day + "." + this.month + "." + this.year;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || this.getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        if (obj == this) {
+            return true;
+        }
+        
+        SimpleDate compared = (SimpleDate) obj;
+        
+        return this.day == compared.day && this.month == compared.month && this.year == compared.year;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + this.day;
+        hash = 71 * hash + this.month;
+        hash = 71 * hash + this.year;
+        return hash;
+    }
+
     public boolean earlier(SimpleDate other) {
         if (this.year < other.year) {
             return true;
