@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -14,4 +15,7 @@ public class BooksFromFile {
 
     }
 
+    public static List<Book> readBooks(String file) throws IOException {
+        return Files.lines(Paths.get(file)).map(b -> b.split(",")).map(a -> new Book(a[0], Integer.parseInt(a[1]), Integer.parseInt(a[2]), a[3])).collect(Collectors.toList());
+    }
 }
