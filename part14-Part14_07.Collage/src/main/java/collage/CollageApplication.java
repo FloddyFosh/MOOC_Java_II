@@ -40,14 +40,17 @@ public class CollageApplication extends Application {
                 double blue = color.getBlue();
                 double opacity = color.getOpacity();
 
-                Color newColor = new Color(red, green, blue, opacity);
+                Color newColor = new Color(1-red, 1-green, 1-blue, opacity);
 
-                imageWriter.setColor(xCoordinate, yCoordinate, newColor);
+                imageWriter.setColor(xCoordinate/2, yCoordinate/2, newColor);
+                imageWriter.setColor(width/2 + xCoordinate/2, yCoordinate/2, newColor);
+                imageWriter.setColor(xCoordinate/2, height/2 + yCoordinate/2, newColor);
+                imageWriter.setColor(width/2 + xCoordinate/2, height/2 + yCoordinate/2, newColor);
 
-                xCoordinate++;
+                xCoordinate+=2;
             }
 
-            yCoordinate++;
+            yCoordinate+=2;
         }
 
         ImageView image = new ImageView(targetImage);
